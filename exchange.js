@@ -21,14 +21,19 @@ convert.addEventListener('click', () => {
     })
     .then(response => {
 
-        console.log(response)
-        response.json()
-    })
+        
+        return response.json()
+        
+
+
+     } )
     
     .then(data => {
-        const rate = data.rate;
-        const result = amountTotal * rate;
-        result.innerHTML = `${amount} ${currency} = ${result.toFixed(2)} USD`;
+        
+        const rate = data.exchange_rate;
+        const totalConverted = amountTotal * rate;
+        result.innerHTML = `${amount.value} ${currency.value} = ${totalConverted.toFixed(2)} USD`;
+
     })
     .catch(error => {
         console.error('Request failed:', error);
